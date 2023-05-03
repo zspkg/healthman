@@ -1,4 +1,4 @@
-# healthman
-Service for easier health managing in services.
+# Healthman Service
+[![codecov](https://codecov.io/github/zamslb/healthman/branch/main/graph/badge.svg?token=IAWZEHOV58)](https://codecov.io/github/zamslb/healthman)
 
-## How to use?
+Service for easier health managing in services.

@@ -1,9 +1,11 @@
-module github.com/zamslb/healthman
+module github.com/zspkg/healthman
 
 go 1.18
 
 require (
-	github.com/stretchr/testify v1.6.1
+	github.com/go-chi/chi v4.1.2+incompatible
+	github.com/stretchr/testify v1.8.2
+	github.com/zamslb/healthman v0.0.0-20230503185041-aca1f0d9b80b
 	gitlab.com/distributed_lab/ape v1.7.1
 	gitlab.com/distributed_lab/figure v2.1.2+incompatible
 	gitlab.com/distributed_lab/kit v1.11.2
@@ -18,7 +20,6 @@ require (
 	github.com/fsnotify/fsnotify v1.4.7 // indirect
 	github.com/getsentry/raven-go v0.2.0 // indirect
 	github.com/getsentry/sentry-go v0.7.0 // indirect
-	github.com/go-chi/chi v4.1.2+incompatible // indirect
 	github.com/go-ozzo/ozzo-validation/v4 v4.2.1 // indirect
 	github.com/google/jsonapi v0.0.0-20200226002910-c8283f632fb7 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
@@ -43,5 +44,5 @@ require (
 	golang.org/x/sys v0.0.0-20200826173525-f9321e4c35a6 // indirect
 	golang.org/x/text v0.3.3 // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
-	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

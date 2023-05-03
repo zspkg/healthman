@@ -93,9 +93,12 @@ github.com/spf13/pflag
 # github.com/spf13/viper v1.3.2
 ## explicit
 github.com/spf13/viper
-# github.com/stretchr/testify v1.6.1
+# github.com/stretchr/testify v1.8.2
 ## explicit; go 1.13
 github.com/stretchr/testify/assert
+# github.com/zamslb/healthman v0.0.0-20230503185041-aca1f0d9b80b
+## explicit; go 1.18
+github.com/zamslb/healthman/resources
 # gitlab.com/distributed_lab/ape v1.7.1
 ## explicit; go 1.14
 gitlab.com/distributed_lab/ape
@@ -131,6 +134,6 @@ golang.org/x/text/unicode/norm
 # gopkg.in/yaml.v2 v2.2.8
 ## explicit
 gopkg.in/yaml.v2
-# gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c
+# gopkg.in/yaml.v3 v3.0.1
 ## explicit
 gopkg.in/yaml.v3

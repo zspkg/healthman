@@ -1,3 +1,6 @@
+# github.com/DATA-DOG/go-sqlmock v1.5.0
+## explicit
+github.com/DATA-DOG/go-sqlmock
 # github.com/Masterminds/squirrel v1.4.0
 ## explicit
 github.com/Masterminds/squirrel
@@ -93,13 +96,9 @@ github.com/spf13/pflag
 # github.com/spf13/viper v1.3.2
 ## explicit
 github.com/spf13/viper
-# github.com/stretchr/objx v0.5.0
-## explicit; go 1.12
-github.com/stretchr/objx
 # github.com/stretchr/testify v1.8.2
 ## explicit; go 1.13
 github.com/stretchr/testify/assert
-github.com/stretchr/testify/mock
 # github.com/zamslb/healthman v0.0.0-20230503185041-aca1f0d9b80b
 ## explicit; go 1.18
 github.com/zamslb/healthman/resources

@@ -27,6 +27,10 @@ func TestHealthyChecker_Get(t *testing.T) {
 		ServiceName: testServiceUnhealthyName,
 		Healthy:     false,
 	})
+
+	health, err = checker.Get("some-service-that-does-not-exist")
+	assert.Nil(t, err)
+	assert.Nil(t, health)
 }
 
 func TestHealthyChecker_Info(t *testing.T) {

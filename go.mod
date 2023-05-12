@@ -3,8 +3,8 @@ module github.com/zspkg/healthman
 go 1.18
 
 require (
+	github.com/DATA-DOG/go-sqlmock v1.5.0
 	github.com/go-chi/chi v4.1.2+incompatible
-	github.com/sirupsen/logrus v1.6.0
 	github.com/stretchr/testify v1.8.2
 	github.com/zamslb/healthman v0.0.0-20230503185041-aca1f0d9b80b
 	gitlab.com/distributed_lab/ape v1.7.1
@@ -35,12 +35,12 @@ require (
 	github.com/pelletier/go-toml v1.2.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/sirupsen/logrus v1.6.0 // indirect
 	github.com/spf13/afero v1.1.2 // indirect
 	github.com/spf13/cast v1.3.0 // indirect
 	github.com/spf13/jwalterweatherman v1.0.0 // indirect
 	github.com/spf13/pflag v1.0.3 // indirect
 	github.com/spf13/viper v1.3.2 // indirect
-	github.com/stretchr/objx v0.5.0 // indirect
 	gitlab.com/distributed_lab/lorem v0.2.0 // indirect
 	golang.org/x/sys v0.0.0-20200826173525-f9321e4c35a6 // indirect
 	golang.org/x/text v0.3.3 // indirect

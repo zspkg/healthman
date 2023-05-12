@@ -2,7 +2,6 @@ package healthman
 
 import (
 	"database/sql"
-	"gitlab.com/distributed_lab/kit/pgdb"
 )
 
 const postgresServiceName = "db-postgres"
@@ -13,8 +12,8 @@ type dbHealthier struct {
 
 // NewDBHealthier is a constructor of database healthier that implements CheckHealth method based
 // on provided database connection
-func NewDBHealthier(db *pgdb.DB) Healthable {
-	return dbHealthier{DB: db.RawDB()}
+func NewDBHealthier(db *sql.DB) Healthable {
+	return dbHealthier{DB: db}
 }
 
 // Name returns a determined postgresServiceName value

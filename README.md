@@ -3,7 +3,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/zspkg/healthman)](https://goreportcard.com/report/github.com/zspkg/healthman)
 [![Go Reference](https://pkg.go.dev/badge/github.com/zspkg/healthman#section-readme.svg)](https://pkg.go.dev/github.com/zspkg/healthman#section-readme)
 
-Service for easier health managing in services.
+Service for easier health managing in services. API response are made according to [Redhat standard](https://developers.redhat.com/sites/default/files/blog/2017/11/microprofile-health-spec.pdf).
 
 ## Install
 

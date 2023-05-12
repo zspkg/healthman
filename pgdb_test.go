@@ -1,7 +1,6 @@
 package healthman
 
 import (
-	"database/sql"
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
@@ -11,12 +10,7 @@ import (
 func TestDbHealthier_Name(t *testing.T) {
 	db, _, err := sqlmock.New()
 	assert.Nil(t, err)
-	defer func(db *sql.DB) {
-		if err = db.Close(); err != nil {
-			t.Error("Error while closing the database")
-		}
-	}(db)
-
+	
 	healthier := NewDBHealthier(db)
 	assert.Equal(t, postgresServiceName, healthier.Name())
 }

@@ -15,31 +15,29 @@ const (
 	testServiceUnhealthyName = "service_unhealthy"
 )
 
-type testServiceHealthy struct{}
-type testServiceUnhealthy struct{}
-
-func NewTestServiceHealthy() Healthable {
-	return testServiceHealthy{}
+type TestService struct {
+	healthy bool
+	name    string
 }
 
-func (t testServiceHealthy) Name() string {
-	return testServiceHealthyName
+func NewTestServiceHealthy() *TestService {
+	return &TestService{healthy: true, name: testServiceHealthyName}
 }
 
-func (t testServiceHealthy) CheckHealth() bool {
-	return true
+func NewTestServiceUnhealthy() *TestService {
+	return &TestService{healthy: false, name: testServiceUnhealthyName}
 }
 
-func NewTestServiceUnhealthy() Healthable {
-	return testServiceUnhealthy{}
+func (t *TestService) Name() string {
+	return t.name
 }
 
-func (t testServiceUnhealthy) Name() string {
-	return testServiceUnhealthyName
+func (t *TestService) CheckHealth() bool {
+	return t.healthy
 }
 
-func (t testServiceUnhealthy) CheckHealth() bool {
-	return false
+func (t *TestService) ChangeHealthStatus() {
+	t.healthy = !t.healthy
 }
 
 type testCli struct {

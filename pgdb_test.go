@@ -10,9 +10,9 @@ import (
 func TestDbHealthier_Name(t *testing.T) {
 	db, _, err := sqlmock.New()
 	assert.Nil(t, err)
-	
+
 	healthier := NewDBHealthier(db)
-	assert.Equal(t, postgresServiceName, healthier.Name())
+	assert.Equal(t, PostgresDependencyName, healthier.Name())
 }
 
 func TestDbHealthier_GetHealthy(t *testing.T) {

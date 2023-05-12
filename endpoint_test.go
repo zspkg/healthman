@@ -30,7 +30,7 @@ func TestHealthCheckEndpoint(t *testing.T) {
 
 		var healthResponse resources.ServiceHealthListResponse
 		client.ReadBody(response, &healthResponse)
-		assert.Equal(t, []resources.ServiceHealth{
+		assert.Equal(t, true, Equal([]resources.ServiceHealth{
 			{
 				Key: resources.Key{ID: "", Type: resources.SERVICE_HEALTH},
 				Attributes: resources.ServiceHealthAttributes{
@@ -45,6 +45,20 @@ func TestHealthCheckEndpoint(t *testing.T) {
 					ServiceName: "service_unhealthy",
 				},
 			},
-		}, healthResponse.Data)
+		}, healthResponse.Data))
 	})
+}
+
+// Equal tells whether a and b contain the same elements.
+// A nil argument is equivalent to an empty slice.
+func Equal[K comparable](a, b []K) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i, v := range a {
+		if v != b[i] {
+			return false
+		}
+	}
+	return true
 }

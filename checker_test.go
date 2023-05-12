@@ -46,7 +46,7 @@ func TestHealthyChecker_Info(t *testing.T) {
 
 	time.Sleep(time.Second)
 	health := checker.Info()
-	assert.Equal(t, health, []ServiceHealth{
+	assert.Equal(t, true, Equal([]ServiceHealth{
 		{
 			ServiceName: testServiceHealthyName,
 			Healthy:     false,
@@ -55,5 +55,5 @@ func TestHealthyChecker_Info(t *testing.T) {
 			ServiceName: testServiceUnhealthyName,
 			Healthy:     true,
 		},
-	})
+	}, health))
 }

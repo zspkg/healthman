@@ -7,6 +7,7 @@ import (
 	"gitlab.com/distributed_lab/logan/v3/errors"
 	"io"
 	"net/http"
+	"sync"
 	"testing"
 )
 
@@ -18,14 +19,15 @@ const (
 type TestService struct {
 	healthy bool
 	name    string
+	mutex   sync.Mutex
 }
 
 func NewTestServiceHealthy() *TestService {
-	return &TestService{healthy: true, name: testServiceHealthyName}
+	return &TestService{healthy: true, name: testServiceHealthyName, mutex: sync.Mutex{}}
 }
 
 func NewTestServiceUnhealthy() *TestService {
-	return &TestService{healthy: false, name: testServiceUnhealthyName}
+	return &TestService{healthy: false, name: testServiceUnhealthyName, mutex: sync.Mutex{}}
 }
 
 func (t *TestService) Name() string {
@@ -37,7 +39,9 @@ func (t *TestService) CheckHealth() bool {
 }
 
 func (t *TestService) ChangeHealthStatus() {
+	t.mutex.Lock()
 	t.healthy = !t.healthy
+	t.mutex.Unlock()
 }
 
 type testCli struct {

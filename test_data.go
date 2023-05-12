@@ -31,11 +31,17 @@ func NewTestServiceUnhealthy() *TestService {
 }
 
 func (t *TestService) Name() string {
-	return t.name
+	t.mutex.Lock()
+	result := t.name
+	t.mutex.Unlock()
+	return result
 }
 
 func (t *TestService) CheckHealth() bool {
-	return t.healthy
+	t.mutex.Lock()
+	result := t.healthy
+	t.mutex.Unlock()
+	return result
 }
 
 func (t *TestService) ChangeHealthStatus() {

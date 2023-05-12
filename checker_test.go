@@ -35,7 +35,7 @@ func TestHealthyChecker_Info(t *testing.T) {
 		unhealthyService = NewTestServiceUnhealthy()
 	)
 	checker := NewHealthyChecker(
-		&HealthmanSettings{Period: time.Millisecond * 100},
+		&HealthmanSettings{Period: time.Microsecond},
 		nil,
 		healthyService,
 		unhealthyService)

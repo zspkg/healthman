@@ -1,7 +1,14 @@
 # Healthman Service
 [![codecov](https://codecov.io/github/zspkg/healthman/branch/main/graph/badge.svg?token=IAWZEHOV58)](https://codecov.io/github/zspkg/healthman)
+[![Go Report Card](https://goreportcard.com/badge/github.com/zspkg/healthman)](https://goreportcard.com/report/github.com/zspkg/healthman)
 
 Service for easier health managing in services.
+
+## Install
+
+```bash
+go get github.com/zspkg/healthman
+```
 
 ## How to use?
 

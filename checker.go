@@ -80,6 +80,7 @@ func (c *healthyChecker) Iterate(_ context.Context) error {
 	return nil
 }
 
+// Get is a function that, based on serviceName, returns a service health status
 func (c *healthyChecker) Get(serviceName string) (*ServiceHealth, error) {
 	v, ok := c.storage.Load(serviceName)
 	if !ok {
@@ -94,6 +95,7 @@ func (c *healthyChecker) Get(serviceName string) (*ServiceHealth, error) {
 	return &stored.Status, nil
 }
 
+// Info is a function that returns full information about all services' health statuses
 func (c *healthyChecker) Info() []ServiceHealth {
 	result := make([]ServiceHealth, 0)
 	c.storage.Range(func(_, value any) bool {

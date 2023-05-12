@@ -4,7 +4,7 @@ import (
 	"database/sql"
 )
 
-const postgresServiceName = "db-postgres"
+const PostgresDependencyName = "db-postgres"
 
 type dbHealthier struct {
 	DB *sql.DB
@@ -18,7 +18,7 @@ func NewDBHealthier(db *sql.DB) Healthable {
 
 // Name returns a determined postgresServiceName value
 func (h dbHealthier) Name() string {
-	return postgresServiceName
+	return PostgresDependencyName
 }
 
 // CheckHealth pings a database and returns whether no error occurred

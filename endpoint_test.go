@@ -30,7 +30,7 @@ func TestHealthCheckEndpoint(t *testing.T) {
 
 		var healthResponse resources.ServiceHealthListResponse
 		client.ReadBody(response, &healthResponse)
-		assert.Equal(t, healthResponse.Data, []resources.ServiceHealth{
+		assert.Equal(t, []resources.ServiceHealth{
 			{
 				Key: resources.Key{ID: "", Type: resources.SERVICE_HEALTH},
 				Attributes: resources.ServiceHealthAttributes{
@@ -45,6 +45,6 @@ func TestHealthCheckEndpoint(t *testing.T) {
 					ServiceName: "service_unhealthy",
 				},
 			},
-		})
+		}, healthResponse.Data)
 	})
 }

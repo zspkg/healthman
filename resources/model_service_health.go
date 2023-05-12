@@ -1,31 +1,13 @@
-/*
- * GENERATED. Do not modify. Your changes might be overwritten!
- */
-
 package resources
 
-type ServiceHealth struct {
-	Key
-	Attributes ServiceHealthAttributes `json:"attributes"`
-}
+// ServiceHealthResponse is a response for /health endpoint containing outcome
 type ServiceHealthResponse struct {
-	Data     ServiceHealth `json:"data"`
-	Included Included      `json:"included"`
+	Outcome State   `json:"outcome"`
+	Checks  []Check `json:"checks"`
 }
 
-type ServiceHealthListResponse struct {
-	Data     []ServiceHealth `json:"data"`
-	Included Included        `json:"included"`
-	Links    *Links          `json:"links"`
-}
-
-// MustServiceHealth - returns ServiceHealth from include collection.
-// if entry with specified key does not exist - returns nil
-// if entry with specified key exists but type or ID mismatches - panics
-func (c *Included) MustServiceHealth(key Key) *ServiceHealth {
-	var serviceHealth ServiceHealth
-	if c.tryFindEntry(key, &serviceHealth) {
-		return &serviceHealth
-	}
-	return nil
+// Check is a structure representing health of a service
+type Check struct {
+	Name  string `json:"name"`
+	State State  `json:"state"`
 }

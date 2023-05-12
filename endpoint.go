@@ -2,7 +2,7 @@ package healthman
 
 import (
 	"context"
-	"github.com/zamslb/healthman/resources"
+	"github.com/zspkg/healthman/resources"
 	"gitlab.com/distributed_lab/ape"
 	"net/http"
 )
@@ -28,23 +28,22 @@ func CheckHealth(w http.ResponseWriter, r *http.Request) {
 	ape.Render(w, formHealthResponse(HealthCheck(r)))
 }
 
-func formHealthResponse(servicesHealth []ServiceHealth) resources.ServiceHealthListResponse {
-	result := resources.ServiceHealthListResponse{
-		Data: make([]resources.ServiceHealth, len(servicesHealth)),
+func formHealthResponse(servicesHealth []ServiceHealth) resources.ServiceHealthResponse {
+	result := resources.ServiceHealthResponse{
+		Outcome: resources.StateUp,
+		Checks:  make([]resources.Check, len(servicesHealth)),
 	}
 	for i, serviceHealth := range servicesHealth {
-		result.Data[i] = serviceHealthToResource(serviceHealth)
+		result.Checks[i] = serviceHealthToResource(serviceHealth)
 	}
 
 	return result
 }
 
-func serviceHealthToResource(serviceHealth ServiceHealth) resources.ServiceHealth {
-	return resources.ServiceHealth{
-		Key: resources.Key{Type: resources.SERVICE_HEALTH},
-		Attributes: resources.ServiceHealthAttributes{
-			Healthy:     serviceHealth.Healthy,
-			ServiceName: serviceHealth.ServiceName,
-		},
+func serviceHealthToResource(serviceHealth ServiceHealth) resources.Check {
+	return resources.Check{
+		State: resources.BoolToState(serviceHealth.Healthy),
+		Name:  serviceHealth.ServiceName,
 	}
+
 }

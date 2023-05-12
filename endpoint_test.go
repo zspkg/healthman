@@ -3,7 +3,7 @@ package healthman
 import (
 	"github.com/go-chi/chi"
 	"github.com/stretchr/testify/assert"
-	"github.com/zamslb/healthman/resources"
+	"github.com/zspkg/healthman/resources"
 	"gitlab.com/distributed_lab/ape"
 	"net/http"
 	"net/http/httptest"
@@ -31,24 +31,18 @@ func TestHealthCheckEndpoint(t *testing.T) {
 		response := client.Do(http.MethodGet, testServer.URL+endpoint, nil)
 		assert.Equal(t, http.StatusOK, response.StatusCode)
 
-		var healthResponse resources.ServiceHealthListResponse
+		var healthResponse resources.ServiceHealthResponse
 		client.ReadBody(response, &healthResponse)
-		assert.Equal(t, true, Equal([]resources.ServiceHealth{
+		assert.Equal(t, true, Equal([]resources.Check{
 			{
-				Key: resources.Key{ID: "", Type: resources.SERVICE_HEALTH},
-				Attributes: resources.ServiceHealthAttributes{
-					Healthy:     true,
-					ServiceName: "service_healthy",
-				},
+				State: resources.StateUp,
+				Name:  testServiceHealthyName,
 			},
 			{
-				Key: resources.Key{ID: "", Type: resources.SERVICE_HEALTH},
-				Attributes: resources.ServiceHealthAttributes{
-					Healthy:     false,
-					ServiceName: "service_unhealthy",
-				},
+				State: resources.StateDown,
+				Name:  testServiceUnhealthyName,
 			},
-		}, healthResponse.Data))
+		}, healthResponse.Checks))
 	})
 }
 

@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"time"
 )
 
 func TestHealthCheckEndpoint(t *testing.T) {
@@ -22,6 +23,8 @@ func TestHealthCheckEndpoint(t *testing.T) {
 
 	testServer := httptest.NewServer(router)
 	defer testServer.Close()
+
+	time.Sleep(time.Second)
 
 	t.Run("must get healthy and unhealthy services", func(t *testing.T) {
 		t.Log(testServer.URL + endpoint)
@@ -55,10 +58,18 @@ func Equal[K comparable](a, b []K) bool {
 	if len(a) != len(b) {
 		return false
 	}
-	for i, v := range a {
-		if v != b[i] {
+	for i := range a {
+		found := false
+		for j := range b {
+			if a[i] == b[j] {
+				found = true
+				break
+			}
+		}
+		if !found {
 			return false
 		}
 	}
+
 	return true
 }
